@@ -8,9 +8,9 @@ This application allows you to create and view employee records
     * `cd seng3120-php-crud-app`
 3. Launch vagrant
     * `vagrant up`
-4. After the vagrant VM's are up an running, open the folowing address in a browser
+4. After the vagrant VM's are up and running, open the following address in a browser
     * http://localhost:5555/alex
-5. After you are done, run the following command to shutdown the app and delete VM's
+5. After you are done using the app, run the following command to shutdown and delete VM's
     * `vagrant destroy` 
 
 #### Other Information
