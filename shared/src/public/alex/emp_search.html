@@ -5,12 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/bootstrap.css">
     <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/index.js"></script>
     <title>Search Employee Record</title>
 </head>
 <body>
     <header>
         <h1>Employee Management System</h1>
-        <a href="."><button type="button" class="btn btn-light">Home</button></a>
+        <a href="."><button type="button" class="btn btn-outline-light">Home</button></a>
     </header>
     <div class="main">
         <div class="view">
@@ -19,11 +20,14 @@
                 <form action="emp_search.php">
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="basic-addon1">Employee ID</span>
-                        <input type="text" class="form-control" name="emp_id" placeholder="500000" ria-describedby="basic-addon1">
+                        <input type="text" class="form-control" name="emp_no" value="500000" ria-describedby="basic-addon1">
                     </div>
-                    <input class="btn btn-secondary full-width ctrl-btn" type="submit" value="Search">
-                    <a href="."><input class="btn btn-secondary full-width" value="Back"></a>
+                    <input class="btn btn-primary full-width ctrl-btn" type="submit" value="Continue">
                 </form>
+                <input type="button" class="btn btn-secondary full-width ctrl-btn" value="Clear" onclick="clear_forms()">
+                <a href="."><input type="button" class="btn btn-secondary full-width" value="Back"></a>
             </div>
         </div>
     </div>
+</body>
+</html>

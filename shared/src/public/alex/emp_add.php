@@ -10,7 +10,7 @@
 <body>
     <header>
         <h1>Employee Management System</h1>
-        <a href="."><button type="button" class="btn btn-light">Home</button></a>
+        <a href="."><button type="button" class="btn btn-outline-light">Home</button></a>
     </header>
     <div class="main">
         <div class="view">
@@ -19,9 +19,10 @@
             <?php
                     include 'credentials.php';
 
+                    $conn = new mysqli($servername, $username, $password, $dbname);
+                    if ($conn->connect_error) die("MySQL Connection Failed: " . $conn->connect_error);
 
-
-                    $emp_id = $_GET["emp_id"];
+                    $emp_no = $_GET["emp_no"];
                     $last_name = $_GET["last_name"];
                     $first_name = $_GET["first_name"];
                     $gender = $_GET["gender"];
@@ -29,32 +30,34 @@
                     $salary = $_GET["salary"];
                     $title = $_GET["title"];
 
-                    $conn = new mysqli($servername, $username, $password, $dbname);
-                    if ($conn->connect_error) die("MySQL Connection Failed: " . $conn->connect_error);
-                    $sql = "insert into employees (emp_no, last_name, first_name, gender, hire_date, birth_date) values ('".$emp_id."', '".$last_name."', '".$first_name."', '".$gender."', '".$hire_date."', '0000-00-00')";
-                    echo "<p>$sql</p>";
-                    $result = $conn->query($sql);
-                    if ($conn->query($sql) !== TRUE) echo "<p>Error: $conn->error</p>";
-                    $conn->close();
+                    $failed = FALSE;
+                   
+                    $sql = "INSERT INTO employees (emp_no, birth_date, first_name, last_name, gender, hire_date) VALUES ('$emp_no','0000-00-00' ,'$first_name' , '$last_name', '$gender', '$hire_date')";
+                    if ($conn->query($sql) !== TRUE) {
+                        $failed = TRUE;
+                        echo "<p>$sql</p><p>Error: $conn->error</p>";
+                    }
 
-                    $conn = new mysqli($servername, $username, $password, $dbname);
-                    if ($conn->connect_error) die("MySQL Connection Failed: " . $conn->connect_error);
-                    $sql = "insert into salaries (emp_no, salary, from_date, to_date) values ('".$emp_id."', '".$salary."', '0000-00-00', '0000-00-00')";
-                    $result = $conn->query($sql);
-                    if ($conn->query($sql) !== TRUE) echo "<p>Error: $conn->error</p>";
-                    $conn->close();
+                    $sql = "insert into salaries (emp_no, salary, from_date, to_date) values ('".$emp_no."', '".$salary."', '0000-00-00', '0000-00-00')";
+                    if (!$failed && $conn->query($sql) !== TRUE) {
+                        $failed = TRUE;
+                        echo "<p>$sql</p><p>Error: $conn->error</p>";
+                    }
 
-                    $conn = new mysqli($servername, $username, $password, $dbname);
-                    if ($conn->connect_error) die("MySQL Connection Failed: " . $conn->connect_error);
-                    $sql = "insert into titles (emp_no, title, from_date, to_date) values ('".$emp_id."', '".$title."', '0000-00-00', '0000-00-00')";
-                    $result = $conn->query($sql);
-                    if ($conn->query($sql) !== TRUE) echo "<p>Error: $conn->error</p>";
-                    $conn->close();
-                    
+                    $sql = "insert into titles (emp_no, title, from_date, to_date) values ('".$emp_no."', '".$title."', '0000-00-00', '0000-00-00')";
+                    if (!$failed && $conn->query($sql) !== TRUE) {
+                        $failed = TRUE;
+                        echo "<p>$sql</p><p>Error: $conn->error</p>";
+                    }
 
-                    echo "success";
+                    if (!$failed) {
+                        echo "<p>Employee Record Created Successfully</p>";
+                        echo '<a href="./emp_search.php?emp_no='.$emp_no.'"><input class="btn btn-primary full-width ctrl-btn" type="button" value="View Record"></a>';
+                    }
                 ?>
-                <a href="./emp_add.html"><input class="btn btn-secondary full-width" value="Back"></a>
+                <a href="./emp_add.html"><input class="btn btn-secondary full-width" type="button" value="Back"></a>
             </div>
         </div>
     </div>
+</body>
+</html>
