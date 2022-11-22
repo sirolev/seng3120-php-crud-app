@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/bootstrap.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Search Employee Record</title>
+</head>
+<body>
+    <header>
+        <h1>Employee Management System</h1>
+        <a href="."><button type="button" class="btn btn-light">Home</button></a>
+    </header>
+    <div class="main">
+        <div class="view">
+            <div class="view-header">Search Employee Record</div>
+            <div class="view-body">
+                <form action="emp_search.php">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Employee ID</span>
+                        <input type="text" class="form-control" name="emp_id" placeholder="500000" ria-describedby="basic-addon1">
+                    </div>
+                    <input class="btn btn-secondary full-width ctrl-btn" type="submit" value="Search">
+                    <a href="."><input class="btn btn-secondary full-width" value="Back"></a>
+                </form>
+            </div>
+        </div>
+    </div>

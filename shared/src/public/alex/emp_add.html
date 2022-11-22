@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/bootstrap.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Add Employee Record</title>
+</head>
+<body>
+    <header>
+        <h1>Employee Management System</h1>
+        <a href="."><button type="button" class="btn btn-light">Home</button></a>
+    </header>
+    <div class="main">
+        <div class="view">
+            <div class="view-header">Add Employee Record</div>
+            <div class="view-body">
+                <form action="emp_add.php">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Last Name</span>
+                        <input type="text" class="form-control" name="last_name" placeholder="Weedman" ria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon2">First Name</span>
+                        <input type="text" class="form-control" name="first_name" placeholder="Josphine" ria-describedby="basic-addon2">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon3">Gender</span>
+                        <input type="text" class="form-control" name="gender"placeholder="F" ria-describedby="basic-addon3">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon4">Salary</span>
+                        <input type="text" class="form-control" name="salary" placeholder="74000" ria-describedby="basic-addon4">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon5">Hire date</span>
+                        <input type="text" class="form-control" name="hire_date"placeholder="1969-05-30" ria-describedby="basic-addon5">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon6">Position Title</span>
+                        <input type="text" class="form-control" name="title" placeholder="Data Scientist" ria-describedby="basic-addon6">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon7">Employee ID</span>
+                        <input type="text" class="form-control" name="emp_id" placeholder="500000" ria-describedby="basic-addon7">
+                    </div>
+                    <input class="btn btn-secondary full-width ctrl-btn" type="submit" value="Submit">
+                    <a href="."><input class="btn btn-secondary full-width" value="Back"></a>
+                </form>
+            </div>
+        </div>
+    </div>

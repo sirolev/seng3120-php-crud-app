@@ -15,13 +15,13 @@ Vagrant.configure("2") do |config|
    web.vm.box = "ubuntu/focal64"
 
    web.vm.provider "virtualbox" do |v|
-    v.memory = 1024
-    v.cpus = 1
+    v.memory = 2048
+    v.cpus = 2
     v.name = "lamp-web"
   end
 
    # setup networking
-   web.vm.network "forwarded_port", guest: 80, host: 80
+   web.vm.network "forwarded_port", guest: 80, host: 5555
    web.vm.network "private_network", ip: "192.168.56.10"
       
    #copy any needed files out to the vm
@@ -45,8 +45,8 @@ Vagrant.configure("2") do |config|
     db.vm.box = "ubuntu/focal64"
 
     db.vm.provider "virtualbox" do |v|
-      v.memory = 1024
-      v.cpus = 1
+      v.memory = 2048
+      v.cpus = 2
       v.name = "lamp-db"
     end
 
@@ -63,6 +63,10 @@ Vagrant.configure("2") do |config|
 
       cp /vagrant/50-server.cnf /etc/mysql/mariadb.conf.d/50-server.cnf
       systemctl restart mariadb
+
+      # fixes error: /bin/bash^M: bad interpreter
+      sed -i -e 's/\r$//' /vagrant/setup_mysql.sh
+      sed -i -e 's/\r$//' /vagrant/add_user.sh
 
       /vagrant/setup_mysql.sh
       /vagrant/add_user.sh #{DB_USER} #{DB_PASS}
